@@ -19,7 +19,7 @@ export class LoginComponent {
       .subscribe({
         next: (response: any) => {
           localStorage.setItem('token', response.accessToken);
-          this.router.navigate(['/registros']);
+          this.router.navigate(['registros']);
         },
         error: (error) => {
           console.error('Erro ao fazer login:', error.error.message);
