@@ -26,14 +26,16 @@ export class ValidateComponent implements OnInit {
       this.userService.getUserById(this.id).subscribe({
         next: (response) => this.buildForm(response),
         error: (error) => {
-          console.error(error);
+          console.error(error.error.message);
+          alert(
+            'Ocorreu um erro ao acessar conta de usuario. Tente novamente mais tarde.'
+          );
         },
       });
     });
   }
 
   buildForm(user: User) {
-    console.log(this.formValidate);
     this.formValidate = this.formBuilder.group({
       name: [user.name, [Validators.required, Validators.maxLength(100)]],
       email: [
@@ -50,7 +52,7 @@ export class ValidateComponent implements OnInit {
       ],
       skills: [user.skills.join(','), [Validators.required]],
       phone: [user.phone],
-      authenticated: [user.authenticated],
+      authenticated: [!!user.authenticated],
     });
   }
   onSubmit() {
@@ -59,7 +61,9 @@ export class ValidateComponent implements OnInit {
       return;
     }
     const formData = this.formValidate?.getRawValue();
+
     formData.skills = formData.skills.split(',');
+    formData.authenticated = formData.authenticated ? new Date() : 'false';
     this.userService.updateUser(this.id, formData).subscribe({
       next: (response) => {
         alert(`Registro do ${response.name} !`);

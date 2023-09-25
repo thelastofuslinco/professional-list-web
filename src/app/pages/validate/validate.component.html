@@ -1,5 +1,5 @@
 <form class="form-container">
-  <h2>Registrar Ponto</h2>
+  <h2>Validar Ponto</h2>
   <form (ngSubmit)="onSubmit()" [formGroup]="formValidate" novalidate>
     <div class="fields">
       <input
@@ -8,17 +8,9 @@
         name="name"
         formControlName="name"
         required
+        readonly
       />
       <label for="name">Nome:</label>
-      <div
-        class="required-container"
-        *ngIf="
-          formValidate.get('name')?.hasError('required') &&
-          formValidate.get('name')?.touched
-        "
-      >
-        Nome é <strong>obrigatório</strong>
-      </div>
     </div>
     <div class="fields">
       <input
@@ -27,26 +19,9 @@
         name="email"
         formControlName="email"
         required
+        readonly
       />
       <label for="email">Email:</label>
-      <div
-        class="required-container"
-        *ngIf="
-          formValidate.get('email')?.hasError('email') &&
-          formValidate.get('email')?.touched
-        "
-      >
-        Por favor informe um email válido
-      </div>
-      <div
-        class="required-container"
-        *ngIf="
-          formValidate.get('email')?.hasError('required') &&
-          formValidate.get('email')?.touched
-        "
-      >
-        Email é <strong>obrigatório</strong>
-      </div>
     </div>
     <div class="fields">
       <input
@@ -58,26 +33,9 @@
         formControlName="cpf"
         maxlength="14"
         required
+        readonly
       />
       <label for="cpf">CPF:</label>
-      <div
-        class="required-container"
-        *ngIf="
-          formValidate.get('cpf')?.hasError('minlength') &&
-          formValidate.get('cpf')?.touched
-        "
-      >
-        Por favor informe um cpf válido
-      </div>
-      <div
-        class="required-container"
-        *ngIf="
-          formValidate.get('cpf')?.hasError('required') &&
-          formValidate.get('cpf')?.touched
-        "
-      >
-        Cpf é <strong>obrigatório</strong>
-      </div>
     </div>
     <div class="fields">
       <input
@@ -87,6 +45,7 @@
         maxlength="15"
         formControlName="phone"
         required
+        readonly
       />
       <label for="phone">Celular:</label>
     </div>
@@ -96,9 +55,8 @@
         id="authenticated"
         name="authenticated"
         formControlName="authenticated"
-        required
       />
-      <label for="authenticated">Conhecimentos:</label>
+      <label for="authenticated">Validado:</label>
     </div>
     <div class="fields">
       <input
@@ -108,6 +66,7 @@
         formControlName="skills"
         placeholder="Git, React, PHP, NodeJS..."
         required
+        readonly
       />
       <label for="skills">Conhecimentos:</label>
     </div>
