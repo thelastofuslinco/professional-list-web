@@ -1,0 +1,116 @@
+<form class="form-container">
+  <h2>Registrar Ponto</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="formValidate" novalidate>
+    <div class="fields">
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name"
+        required
+      />
+      <label for="name">Nome:</label>
+      <div
+        class="required-container"
+        *ngIf="
+          formValidate.get('name')?.hasError('required') &&
+          formValidate.get('name')?.touched
+        "
+      >
+        Nome é <strong>obrigatório</strong>
+      </div>
+    </div>
+    <div class="fields">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+        required
+      />
+      <label for="email">Email:</label>
+      <div
+        class="required-container"
+        *ngIf="
+          formValidate.get('email')?.hasError('email') &&
+          formValidate.get('email')?.touched
+        "
+      >
+        Por favor informe um email válido
+      </div>
+      <div
+        class="required-container"
+        *ngIf="
+          formValidate.get('email')?.hasError('required') &&
+          formValidate.get('email')?.touched
+        "
+      >
+        Email é <strong>obrigatório</strong>
+      </div>
+    </div>
+    <div class="fields">
+      <input
+        maxlength="14"
+        minlength="14"
+        type="text"
+        id="cpf"
+        name="cpf"
+        formControlName="cpf"
+        maxlength="14"
+        required
+      />
+      <label for="cpf">CPF:</label>
+      <div
+        class="required-container"
+        *ngIf="
+          formValidate.get('cpf')?.hasError('minlength') &&
+          formValidate.get('cpf')?.touched
+        "
+      >
+        Por favor informe um cpf válido
+      </div>
+      <div
+        class="required-container"
+        *ngIf="
+          formValidate.get('cpf')?.hasError('required') &&
+          formValidate.get('cpf')?.touched
+        "
+      >
+        Cpf é <strong>obrigatório</strong>
+      </div>
+    </div>
+    <div class="fields">
+      <input
+        type="text"
+        id="phone"
+        name="phone"
+        maxlength="15"
+        formControlName="phone"
+        required
+      />
+      <label for="phone">Celular:</label>
+    </div>
+    <div class="fields">
+      <input
+        type="checkbox"
+        id="authenticated"
+        name="authenticated"
+        formControlName="authenticated"
+        required
+      />
+      <label for="authenticated">Conhecimentos:</label>
+    </div>
+    <div class="fields">
+      <input
+        type="text"
+        id="skills"
+        name="skills"
+        formControlName="skills"
+        placeholder="Git, React, PHP, NodeJS..."
+        required
+      />
+      <label for="skills">Conhecimentos:</label>
+    </div>
+    <button type="submit">Registrar</button>
+  </form>
+</form>

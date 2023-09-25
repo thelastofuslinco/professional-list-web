@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeroesComponent } from './heroes/heroes.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { RecordsComponent } from './records/records.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RecordComponent } from './pages/record/record.component';
+import { RecordsComponent } from './pages/records/records.component';
+import { ValidateComponent } from './pages/validate/validate.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'records', component: RecordsComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'registros', component: RecordsComponent },
+  { path: 'registrar', component: RecordComponent },
+  { path: ':id/validar', component: ValidateComponent },
 ];
 
 @NgModule({
