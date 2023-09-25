@@ -12,7 +12,7 @@ export class RecordsComponent implements OnInit {
   users: User[] = [];
   constructor(private userService: UserService, private router: Router) {}
   ngOnInit(): void {
-    this.userService.getUsers().subscribe({
+    this.userService.getUsers({ orderBy: 'asc' }).subscribe({
       next: (response) => {
         this.users = response;
       },
@@ -25,7 +25,6 @@ export class RecordsComponent implements OnInit {
   getUser(user: User) {
     this.userService.getUserById(user.id).subscribe({
       next: (response) => {
-        console.log(response);
         this.router.navigate([response.id, 'validar']);
       },
       error: (error) => {

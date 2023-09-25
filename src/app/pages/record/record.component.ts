@@ -35,6 +35,7 @@ export class RecordComponent implements OnInit {
       ],
       skills: ['', [Validators.required]],
       phone: [''],
+      authenticated: [false],
     });
   }
   onSubmit() {
@@ -54,21 +55,4 @@ export class RecordComponent implements OnInit {
       },
     });
   }
-
-  // phoneChange(phone: string) {
-  //   if (phone.length === 1) {
-  //     this.phone = '(' + this.phone;
-  //   } else if (phone.length === 3) {
-  //     this.phone += ') ';
-  //   } else if (phone.length === 10) {
-  //     this.phone += '-';
-  //   }
-  // }
-  // cpfChange(cpf: string) {
-  //   if (cpf.length === 3 || cpf.length === 7) {
-  //     this.cpf += '.';
-  //   } else if (cpf.length === 11) {
-  //     this.cpf += '-';
-  //   }
-  // }
 }

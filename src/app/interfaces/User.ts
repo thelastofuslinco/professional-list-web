@@ -5,7 +5,8 @@ export interface User {
   cpf: string;
   phone?: string;
   password: string;
-  authenticated?: Date;
+  authenticated: boolean;
   skills: string[];
   created_at: Date;
+  authenticated_at?: Date;
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/User';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,12 +10,22 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ValidateComponent implements OnInit {
   id: string = '';
-  formValidate: FormGroup = this.formBuilder.group({});
+  user: User = {
+    id: '',
+    name: '',
+    email: '',
+    cpf: '',
+    phone: '',
+    password: '',
+    authenticated: false,
+    skills: [],
+    created_at: new Date(),
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,7 +33,7 @@ export class ValidateComponent implements OnInit {
       this.id = params['id'];
 
       this.userService.getUserById(this.id).subscribe({
-        next: (response) => this.buildForm(response),
+        next: (response) => (this.user = response),
         error: (error) => {
           console.error(error.error.message);
           alert(
@@ -35,38 +44,13 @@ export class ValidateComponent implements OnInit {
     });
   }
 
-  buildForm(user: User) {
-    this.formValidate = this.formBuilder.group({
-      name: [user.name, [Validators.required, Validators.maxLength(100)]],
-      email: [
-        user.email,
-        [Validators.required, Validators.email, Validators.maxLength(100)],
-      ],
-      cpf: [
-        user.cpf,
-        [
-          Validators.required,
-          Validators.maxLength(14),
-          Validators.minLength(14),
-        ],
-      ],
-      skills: [user.skills.join(','), [Validators.required]],
-      phone: [user.phone],
-      authenticated: [!!user.authenticated],
-    });
-  }
   onSubmit() {
-    if (this.formValidate?.invalid) {
-      alert('Por favor preencha todos os campos corretamente.');
-      return;
-    }
-    const formData = this.formValidate?.getRawValue();
+    const authenticated = this.user?.authenticated;
 
-    formData.skills = formData.skills.split(',');
-    formData.authenticated = formData.authenticated ? new Date() : 'false';
-    this.userService.updateUser(this.id, formData).subscribe({
+    this.userService.updateUser(this.id, { authenticated }).subscribe({
       next: (response) => {
         alert(`Registro do ${response.name} !`);
+        this.router.navigate(['registros']);
       },
       error: (error) => {
         console.error('Erro ao registrar:', error.error.message);

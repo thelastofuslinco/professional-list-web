@@ -23,12 +23,13 @@ export class UserService {
     });
   }
 
-  getUsers(): Observable<User[]> {
+  getUsers({ orderBy }: { orderBy: string }): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.url}/user`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
+      params: { orderBy },
     });
   }
   getUserById(id: string): Observable<User> {
@@ -53,6 +54,7 @@ export class UserService {
     cpf: string;
     phone: string;
     skills: string[];
+    authenticated: boolean;
   }): Observable<User> {
     return this.httpClient.post<User>(`${this.url}/user`, body, {
       headers: {
