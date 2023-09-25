@@ -17,16 +17,23 @@ class PermissionsService {
   }
 }
 
+const canActivate = () =>
+  inject(PermissionsService).canActivate(inject(Router));
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'registrar', component: RecordComponent },
   {
     path: 'registros',
     component: RecordsComponent,
-    canActivate: [() => inject(PermissionsService).canActivate(inject(Router))],
+    canActivate: [canActivate],
   },
-  { path: 'registrar', component: RecordComponent },
-  { path: ':id/validar', component: ValidateComponent },
+  {
+    path: ':id/validar',
+    component: ValidateComponent,
+    canActivate: [canActivate],
+  },
 ];
 
 @NgModule({
