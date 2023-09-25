@@ -1,0 +1,31 @@
+nav {
+  background: rgba(3, 6, 15, 0.911);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 0.5rem;
+  list-style-type: none;
+}
+
+nav button {
+  font-size: 1rem;
+  color: #000000;
+  text-decoration: none;
+}
+
+button {
+  background-color: #e6664d;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background-color: #d33a20;
+    cursor: pointer;
+    transition: ease-in-out 0.5s;
+  }
+}

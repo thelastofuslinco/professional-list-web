@@ -1,0 +1,75 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.required-container {
+  position: absolute;
+  top: 44px;
+  color: #b63434;
+}
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(3, 6, 15, 0.911);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.form-container h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+.form-container .fields {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-container .fields input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.form-container .fields label {
+  position: absolute;
+  padding: 10px 0;
+  pointer-events: none;
+
+  top: -20px;
+  left: 0;
+  color: slateblue;
+  font-size: 14px;
+}
+
+.form-container form button {
+  float: right;
+  background-color: slateblue;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  box-shadow: 0 0 2px slateblue, 0 0 5px slateblue, 0 0 5px slateblue,
+    0 0 5px slateblue;
+}

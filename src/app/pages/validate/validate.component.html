@@ -1,0 +1,73 @@
+<form class="form-container">
+  <h2>Validar Ponto</h2>
+  <div class="fields">
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="user.name"
+      required
+      readonly
+    />
+    <label for="name">Nome:</label>
+  </div>
+  <div class="fields">
+    <input
+      type="text"
+      id="email"
+      name="email"
+      [(ngModel)]="user.email"
+      required
+      readonly
+    />
+    <label for="email">Email:</label>
+  </div>
+  <div class="fields">
+    <input
+      type="text"
+      id="cpf"
+      name="cpf"
+      [(ngModel)]="user.cpf"
+      required
+      readonly
+    />
+    <label for="cpf">CPF:</label>
+  </div>
+  <div class="fields">
+    <input
+      type="text"
+      id="phone"
+      name="phone"
+      [(ngModel)]="user.phone"
+      required
+      readonly
+    />
+    <label for="phone">Celular:</label>
+  </div>
+  <div class="fields">
+    <input
+      type="text"
+      id="skills"
+      name="skills"
+      [(ngModel)]="user.skills"
+      required
+      readonly
+    />
+    <label for="skills">Conhecimentos:</label>
+  </div>
+  <div class="authenticated">
+    <label for="authenticated" class="container"
+      >Autenticado:
+
+      <input
+        type="checkbox"
+        id="authenticated"
+        name="authenticated"
+        [(ngModel)]="user.authenticated"
+        required
+      />
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  <button type="submit" (click)="onSubmit()">Validar</button>
+</form>
