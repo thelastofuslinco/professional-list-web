@@ -1,15 +1,49 @@
-<ul class="user">
-  <li *ngFor="let user of users">
-    <span>{{ user.name }}</span>
-    <span>{{ user.authenticated ? "Validado" : "Nao validado" }}</span>
-    <button
-      type="button"
-      class="delete"
-      title="delete hero"
-      (click)="getUser(user)"
-      *ngIf="!user.authenticated"
-    >
-      Validar usuario
-    </button>
-  </li>
-</ul>
+<div class="userContainer">
+  <div>
+    <h2>Filtros</h2>
+    <form (submit)="onKey($event)">
+      <label for="name"
+        >Nome:
+        <input type="text" id="name" name="name" [(ngModel)]="this.filter.name"
+      /></label>
+      <label for="cpf"
+        >Cpf:
+        <input type="text" id="cpf" name="cpf" [(ngModel)]="this.filter.cpf"
+      /></label>
+      <label for="email"
+        >Email:
+        <input
+          type="text"
+          id="email"
+          name="email"
+          [(ngModel)]="this.filter.email"
+      /></label>
+      <label for="phone"
+        >Telefone:
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          [(ngModel)]="this.filter.phone"
+      /></label>
+      <input type="submit" value="Filtrar" />
+    </form>
+
+    <button (click)="setOrderBy()">Ordenar: {{ this.filter.orderBy }}</button>
+  </div>
+  <ul class="user">
+    <li *ngFor="let user of users">
+      <span>{{ user.name }}</span>
+      <span>{{ user.authenticated ? "Validado" : "Nao validado" }}</span>
+      <button
+        type="button"
+        class="delete"
+        title="delete hero"
+        (click)="getUser(user)"
+        *ngIf="!user.authenticated"
+      >
+        Validar usuario
+      </button>
+    </li>
+  </ul>
+</div>

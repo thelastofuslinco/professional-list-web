@@ -35,4 +35,11 @@ npm run start
 
 5. Siga as instruções fornecidas no README.md do projeto **professional-list-api** para continuar a configuração e execução do projeto.
 
-O projeto está configurado para ser executado em http://localhost:4200. Certifique-se de que a porta esteja disponível em sua máquina antes de executar o projeto.
+O projeto está configurado para ser executado em http://localhost:4200. Certifique-se de que a porta esteja disponível em sua máquina antes de executar o projeto. Para ter acesso a todas as funcionalidades da aplicação faça login com o email e senha abaixo.
+
+```json
+{
+  "email": "admin@mail.com",
+  "password": "admin123"
+}
+```

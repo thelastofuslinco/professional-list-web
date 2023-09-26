@@ -24,9 +24,21 @@ export class UserService {
     });
   }
 
-  getUsers({ orderBy }: { orderBy: string }): Observable<User[]> {
+  getUsers({
+    orderBy,
+    name,
+    cpf,
+    email,
+    phone,
+  }: {
+    orderBy: string;
+    name: string;
+    cpf: string;
+    email: string;
+    phone: string;
+  }): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.url}/user`, {
-      params: { orderBy },
+      params: { orderBy, name, cpf, email, phone },
     });
   }
   getUserById(id: string): Observable<User> {

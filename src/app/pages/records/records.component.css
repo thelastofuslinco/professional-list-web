@@ -29,3 +29,41 @@ button {
     transition: ease-in-out 0.5s;
   }
 }
+
+.userContainer {
+  position: relative;
+  padding: 1rem;
+}
+
+.userContainer > div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 1rem;
+  border: 1px solid #e6664d;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.userContainer > div > button {
+  position: absolute;
+  right: 0;
+}

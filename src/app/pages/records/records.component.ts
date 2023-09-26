@@ -10,16 +10,17 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RecordsComponent implements OnInit {
   users: User[] = [];
+  filter: {
+    orderBy: string;
+    name: string;
+    cpf: string;
+    email: string;
+    phone: string;
+  } = { orderBy: 'asc', name: '', cpf: '', email: '', phone: '' };
+
   constructor(private userService: UserService, private router: Router) {}
   ngOnInit(): void {
-    this.userService.getUsers({ orderBy: 'asc' }).subscribe({
-      next: (response) => {
-        this.users = response;
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+    this.getUsers();
   }
 
   getUser(user: User) {
@@ -31,5 +32,26 @@ export class RecordsComponent implements OnInit {
         console.error(error);
       },
     });
+  }
+
+  getUsers() {
+    this.userService.getUsers(this.filter).subscribe({
+      next: (response) => {
+        this.users = response;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+  onKey(event: any) {
+    const { name } = event.target;
+
+    this.filter.name = name.value;
+    this.getUsers();
+  }
+  setOrderBy() {
+    this.filter.orderBy = this.filter.orderBy === 'asc' ? 'desc' : 'asc';
+    this.getUsers();
   }
 }
