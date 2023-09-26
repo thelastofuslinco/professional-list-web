@@ -1,10 +1,16 @@
 <nav>
   <ul>
-    <li>
-      <button [routerLink]="['/registros']">Registros</button>
+    <li *ngIf="this.loggedOn">
+      <button (click)="logout()">Logout</button>
+    </li>
+    <li *ngIf="!this.loggedOn">
+      <button [routerLink]="['login']">Log in</button>
+    </li>
+    <li *ngIf="this.loggedOn">
+      <button [routerLink]="['registros']">Registros</button>
     </li>
     <li>
-      <button [routerLink]="['/registrar']">Registrar</button>
+      <button [routerLink]="['registrar']">Registrar</button>
     </li>
   </ul>
 </nav>

@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from '../interfaces/User';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   url: string = 'http://localhost:3000';
-  constructor(private httpClient: HttpClient, private router: Router) {}
+
+  constructor(private httpClient: HttpClient, public router: Router) {}
   login({
     email,
     password,
@@ -25,28 +26,14 @@ export class UserService {
 
   getUsers({ orderBy }: { orderBy: string }): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.url}/user`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
       params: { orderBy },
     });
   }
   getUserById(id: string): Observable<User> {
-    return this.httpClient.get<User>(`${this.url}/user/${id}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    return this.httpClient.get<User>(`${this.url}/user/${id}`);
   }
   updateUser(id: string, body: Partial<User>): Observable<User> {
-    return this.httpClient.put<User>(`${this.url}/user/${id}`, body, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    return this.httpClient.put<User>(`${this.url}/user/${id}`, body);
   }
   createUser(body: {
     name: string;
@@ -56,19 +43,12 @@ export class UserService {
     skills: string[];
     authenticated: boolean;
   }): Observable<User> {
-    return this.httpClient.post<User>(`${this.url}/user`, body, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    return this.httpClient.post<User>(`${this.url}/user`, body);
   }
   deleteUser(id: string): Observable<User> {
-    return this.httpClient.delete<User>(`${this.url}/user/${id}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    return this.httpClient.delete<User>(`${this.url}/user/${id}`);
+  }
+  get loggedOn() {
+    return localStorage.getItem('token') !== null;
   }
 }

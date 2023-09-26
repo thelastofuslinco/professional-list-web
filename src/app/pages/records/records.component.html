@@ -1,12 +1,13 @@
 <ul class="user">
   <li *ngFor="let user of users">
     <span>{{ user.name }}</span>
-    <span> {{ user.authenticated ? "Validado" : "Nao validado" }}</span>
+    <span>{{ user.authenticated ? "Validado" : "Nao validado" }}</span>
     <button
       type="button"
       class="delete"
       title="delete hero"
       (click)="getUser(user)"
+      *ngIf="!user.authenticated"
     >
       Validar usuario
     </button>

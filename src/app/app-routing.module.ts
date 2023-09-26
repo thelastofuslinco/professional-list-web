@@ -4,11 +4,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { RecordComponent } from './pages/record/record.component';
 import { RecordsComponent } from './pages/records/records.component';
 import { ValidateComponent } from './pages/validate/validate.component';
+import { UserService } from './services/user.service';
 
 @Injectable()
 class PermissionsService {
-  canActivate(router: Router): boolean {
-    if (localStorage.getItem('token') !== null) {
+  canActivate(router: Router, userService: UserService): boolean {
+    if (userService.loggedOn) {
       return true;
     }
     router.navigate(['login']);
@@ -18,7 +19,7 @@ class PermissionsService {
 }
 
 const canActivate = () =>
-  inject(PermissionsService).canActivate(inject(Router));
+  inject(PermissionsService).canActivate(inject(Router), inject(UserService));
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
