@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -12,6 +12,7 @@ import { RecordsComponent } from './pages/records/records.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ValidateComponent } from './pages/validate/validate.component';
+import { HeadersInterceptors } from './interceptors/headersInterceptors';
 
 @NgModule({
   imports: [
@@ -32,5 +33,8 @@ import { ValidateComponent } from './pages/validate/validate.component';
     ValidateComponent,
   ],
   bootstrap: [AppComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptors, multi: true },
+  ],
 })
 export class AppModule {}

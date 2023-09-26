@@ -1,27 +1,45 @@
-# ProfessionalListWeb
+# **📖 Passos para executar o projeto**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+Este projeto utiliza o Angular. Siga as instruções abaixo para executar o projeto em sua máquina local.
 
-## Development server
+- [🌱 Pré-requisitos](#-pré-requisitos)
+- [🏗️ Passo a passo](#%EF%B8%8F-passo-a-passo)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## **🌱 Pré-requisitos**
 
-## Code scaffolding
+- Node.js instalado em sua máquina
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## **🏗️ Passo a passo**
 
-## Build
+1. Abra o terminal e navegue até a pasta raiz do projeto.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```shell
+cd professional-list-web/
+```
 
-## Running unit tests
+2. Execute o comando npm i para instalar todas as dependências do projeto.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```shell
+npm i
+```
 
-## Running end-to-end tests
+3. Execute o comando para iniciar o servidor.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npm run start
+```
 
-## Further help
+4. Abra outro terminal e navegue até a pasta do projeto back-end, disponível em
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [📚 Professional-list-api](https://github.com/thelastofuslinco/professional-list-api)
+
+5. Siga as instruções fornecidas no README.md do projeto **professional-list-api** para continuar a configuração e execução do projeto.
+
+O projeto está configurado para ser executado em http://localhost:4200. Certifique-se de que a porta esteja disponível em sua máquina antes de executar o projeto. Para ter acesso a todas as funcionalidades da aplicação faça login com o email e senha abaixo.
+
+```json
+{
+  "email": "admin@mail.com",
+  "password": "admin123"
+}
+```
