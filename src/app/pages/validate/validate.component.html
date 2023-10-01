@@ -30,6 +30,7 @@
       [(ngModel)]="user.cpf"
       required
       readonly
+      [mask]="'000.000.000-00'"
     />
     <label for="cpf">CPF:</label>
   </div>
@@ -41,6 +42,7 @@
       [(ngModel)]="user.phone"
       required
       readonly
+      [mask]="'(00) 00000-0000'"
     />
     <label for="phone">Celular:</label>
   </div>
