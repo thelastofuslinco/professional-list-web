@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ValidateComponent } from './pages/validate/validate.component';
 import { HeadersInterceptors } from './interceptors/headersInterceptors';
-
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 @NgModule({
   imports: [
     BrowserModule,
@@ -24,6 +24,8 @@ import { HeadersInterceptors } from './interceptors/headersInterceptors';
     BrowserAnimationsModule,
     InputMaskModule,
     CommonModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { HeadersInterceptors } from './interceptors/headersInterceptors';
   ],
   bootstrap: [AppComponent],
   providers: [
+    provideNgxMask(),
     { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptors, multi: true },
   ],
 })
