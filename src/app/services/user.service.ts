@@ -41,11 +41,11 @@ export class UserService {
       params: { orderBy, name, cpf, email, phone },
     });
   }
-  getUserById(id: string): Observable<User> {
-    return this.httpClient.get<User>(`${this.url}/user/${id}`);
+  getUserByName(name: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.url}/user/${name}`);
   }
-  updateUser(id: string, body: Partial<User>): Observable<User> {
-    return this.httpClient.put<User>(`${this.url}/user/${id}`, body);
+  updateUser(name: string, body: Partial<User>): Observable<User> {
+    return this.httpClient.put<User>(`${this.url}/user/${name}`, body);
   }
   createUser(body: {
     name: string;

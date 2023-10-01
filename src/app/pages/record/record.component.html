@@ -51,13 +51,14 @@
     <div class="fields">
       <input
         maxlength="14"
-        minlength="14"
+        minlength="11"
         type="text"
         id="cpf"
         name="cpf"
         formControlName="cpf"
-        maxlength="14"
         required
+        placeholder="000.000.000-00"
+        [mask]="'000.000.000-00'"
       />
       <label for="cpf">CPF:</label>
       <div
@@ -86,6 +87,8 @@
         name="phone"
         maxlength="15"
         formControlName="phone"
+        placeholder="(00) 00000-0000"
+        [mask]="'(00) 00000-0000'"
       />
       <label for="phone">Celular:</label>
     </div>

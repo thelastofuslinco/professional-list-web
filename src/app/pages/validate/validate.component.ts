@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./validate.component.css'],
 })
 export class ValidateComponent implements OnInit {
-  id: string = '';
+  name: string = '';
   user: User = {
     id: '',
     name: '',
@@ -30,9 +30,9 @@ export class ValidateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.id = params['id'];
+      this.name = params['id'];
 
-      this.userService.getUserById(this.id).subscribe({
+      this.userService.getUserByName(this.name).subscribe({
         next: (response) => (this.user = response),
         error: (error) => {
           console.error(error.error.message);
@@ -47,7 +47,7 @@ export class ValidateComponent implements OnInit {
   onSubmit() {
     const authenticated = this.user?.authenticated;
 
-    this.userService.updateUser(this.id, { authenticated }).subscribe({
+    this.userService.updateUser(this.name, { authenticated }).subscribe({
       next: (response) => {
         alert(`Registro do ${response.name} !`);
         this.router.navigate(['registros']);

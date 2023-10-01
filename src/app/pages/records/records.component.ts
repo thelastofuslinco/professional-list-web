@@ -24,9 +24,9 @@ export class RecordsComponent implements OnInit {
   }
 
   getUser(user: User) {
-    this.userService.getUserById(user.id).subscribe({
+    this.userService.getUserByName(user.name).subscribe({
       next: (response) => {
-        this.router.navigate([response.id, 'validar']);
+        this.router.navigate([response.name, 'validar']);
       },
       error: (error) => {
         console.error(error);
